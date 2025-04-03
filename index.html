@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>️ OPEN IN BROWSER REQUIRED</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+font-family: Arial, sans-serif;
+background: #f0f2f5;
+margin: 0;
+padding: 20px;
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+text-align: center;
+}
+.container {
+background: white;
+border-radius: 16px;
+padding: 40px;
+max-width: 650px;
+width: 90%;
+box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+h1 {
+font-size: 36px;
+color: #d32f2f;
+margin-bottom: 30px;
+}
+.url-box {
+border: 3px dashed #1976d2;
+padding: 25px;
+margin: 35px 0;
+border-radius: 12px;
+background: #e3f2fd;
+font-size: 24px;
+font-weight: bold;
+word-break: break-all;
+user-select: all;
+}
+.btn-copy {
+background: #1976d2;
+color: white;
+border: none;
+padding: 20px 40px;
+border-radius: 12px;
+font-size: 22px;
+font-weight: bold;
+cursor: pointer;
+margin: 30px 0;
+transition: all 0.3s;
+}
+.btn-copy:hover {
+background: #1565c0;
+transform: scale(1.03);
+}
+.warning-icon {
+font-size: 60px;
+color: #d32f2f;
+margin-bottom: 25px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="warning-icon">️</div>
+<h1>MANUAL BROWSER OPENING REQUIRED</h1>
+
+<div class="url-box" id="target-url">https://uuyt1.net/4kRsPML</div>
+
+<button class="btn-copy" onclick="copyToClipboard()">COPY LINK NOW</button>
+
+<script>
+// 阻断所有直接跳转尝试
+document.addEventListener('click', function(e) {
+if (e.target.tagName === 'A' || e.target.closest('a')) {
+e.preventDefault();
+alert("SECURITY ALERT: Please COPY and OPEN in browser manually!");
+}
+}, true);
+
+// 强化版复制功能
+function copyToClipboard() {
+const url = document.getElementById('target-url');
+const text = url.innerText;
+
+navigator.clipboard.writeText(text).then(() => {
+alert('✅ COPIED! Now PASTE in browser address bar:\n\n' + text);
+}).catch(() => {
+// 兼容旧浏览器
+const textarea = document.createElement('textarea');
+textarea.value = text;
+textarea.style.position = 'fixed';
+document.body.appendChild(textarea);
+textarea.select();
+try {
+document.execCommand('copy');
+alert(' Link ready for pasting (Ctrl+V)');
+} catch (err) {
+alert('ℹ️ Please manually select and copy the link');
+}
+document.body.removeChild(textarea);
+});
+}
+</script>
+</div>
+</body>
+</html>
